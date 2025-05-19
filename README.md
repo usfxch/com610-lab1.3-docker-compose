@@ -9,7 +9,6 @@ Este es el caso más sencillo, donde solo tienes un servicio web.
 **`docker-compose.yml`:**
 
 ```yaml
-version: '3.1'
 services:
   web:
     image: nginx:latest
@@ -21,9 +20,8 @@ services:
 
 **Explicación:**
 
-  * `version: '3.1'`: Especifica la versión del formato del archivo Docker Compose.
-  * `services:`: Define los servicios que componen la aplicación.
-  * `web:`: Define un servicio llamado `web`.
+  * `services`: Define los servicios que componen la aplicación.
+  * `web`: Define un servicio llamado `web`.
       * `image: nginx:latest`: Utiliza la última imagen oficial de Nginx desde Docker Hub.
       * `ports: - "80:80"`: Mapea el puerto 80 del contenedor al puerto 80 de la máquina host.
       * `volumes: - ./html:/usr/share/nginx/html:ro`: Monta un directorio local `./html` en el directorio `/usr/share/nginx/html` dentro del contenedor (donde Nginx sirve los archivos web). `:ro` indica que el montaje es de solo lectura desde el contenedor.
