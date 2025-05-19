@@ -179,11 +179,11 @@ networks:
 1.  Crea la estructura de carpetas y los archivos como se indicó.
 2.  Asegúrate de que los contenidos de los archivos sean correctos.
 3.  Abre tu terminal o línea de comandos, navega a la carpeta `load-balancer-nginx`.
-4.  Ejecuta 
+4.  Ejecuta:
 
 ```bash
 docker-compose up -d
-```.
+```
 
 **Verificación:**
 
