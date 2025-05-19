@@ -59,10 +59,13 @@ load-balancer-nginx/
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aplicación 1</title>
+    <title>Aplicación 1</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-  <h1>¡Hola desde la Aplicación 1!</h1>
+    <h1>¡Hola desde la Aplicación 1!</h1>
 </body>
 </html>
 ```
@@ -73,10 +76,13 @@ load-balancer-nginx/
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aplicación 2</title>
+    <title>Aplicación 2</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-  <h1>¡Saludos desde la Aplicación 2!</h1>
+    <h1>¡Saludos desde la Aplicación 2!</h1>
 </body>
 </html>
 ```
@@ -87,10 +93,13 @@ load-balancer-nginx/
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aplicación 3</title>
+    <title>Aplicación 3</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-  <h1>¡Bienvenidos a la Aplicación 3!</h1>
+    <h1>¡Bienvenidos a la Aplicación 3!</h1>
 </body>
 </html>
 ```
