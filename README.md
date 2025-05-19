@@ -13,7 +13,7 @@ services:
   web:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./html:/usr/share/nginx/html:ro
 ```
@@ -23,7 +23,7 @@ services:
   * `services`: Define los servicios que componen la aplicación.
   * `web`: Define un servicio llamado `web`.
       * `image: nginx:latest`: Utiliza la última imagen oficial de Nginx desde Docker Hub.
-      * `ports: - "80:80"`: Mapea el puerto 80 del contenedor al puerto 80 de la máquina host.
+      * `ports: - "8080:80"`: Mapea el puerto 80 del contenedor al puerto 8080 de la máquina host.
       * `volumes: - ./html:/usr/share/nginx/html:ro`: Monta un directorio local `./html` en el directorio `/usr/share/nginx/html` dentro del contenedor (donde Nginx sirve los archivos web). `:ro` indica que el montaje es de solo lectura desde el contenedor.
 
 **Uso:**
@@ -137,7 +137,7 @@ services:
   loadbalancer:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
@@ -173,7 +173,7 @@ networks:
   * `services:`: Define los servicios.
       * `loadbalancer`:
           * `image: nginx:latest`: Utiliza la imagen de Nginx.
-          * `ports: - "80:80"`: Expone el puerto 80 del balanceador de carga al puerto 80 de la máquina host.
+          * `ports: - "8080:80"`: Expone el puerto 80 del balanceador de carga al puerto 8080 de la máquina host.
           * `volumes: - ./nginx.conf:/etc/nginx/conf.d/default.conf`: Monta tu archivo de configuración `nginx.conf` en la ubicación donde Nginx lee su configuración por defecto dentro del contenedor.
           * `depends_on`: Asegura que las aplicaciones backend (`app1`, `app2`, `app3`) estén iniciadas antes del balanceador de carga.
           * `networks: - app-network`: Conecta el balanceador de carga a la red `app-network`.
@@ -190,9 +190,9 @@ networks:
 3.  Abre tu terminal o línea de comandos, navega a la carpeta `load-balancer-nginx`.
 4.  Ejecuta:
 
-```bash
-docker-compose up -d
-```
+    ```bash
+    docker-compose up -d
+    ```
 
 **Verificación:**
 
@@ -206,8 +206,6 @@ En esta configuración, el contenedor `loadbalancer` que ejecuta Nginx actúa co
 Este ejemplo básico muestra cómo configurar un balanceador de carga con Nginx utilizando Docker Compose. En un escenario real, tus aplicaciones backend serían contenedores con tu código de aplicación real (Express.js, Python/Flask, etc.). La configuración del `upstream` en `nginx.conf` dirigiría el tráfico a esos contenedores.
 
 ## Ejemplo 3: Aplicación Web con Base de Datos (WordPress y MySQL)
-
-## Ejemplo 2: Aplicación Web con Base de Datos (WordPress y MySQL)
 
 Este es un ejemplo clásico de una aplicación web que depende de una base de datos.
 
@@ -232,7 +230,7 @@ services:
     image: wordpress
     restart: always
     ports:
-      - "8080:80"
+      - "808080:80"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: wordpress
@@ -258,14 +256,14 @@ volumes:
 2.  Ejecuta:
 
     ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
 
 3.  Abre tu navegador y ve a `http://localhost:8080`. Deberías ver la pantalla de instalación de WordPress.
 4.  Para detener y eliminar los contenedores y volúmenes, ejecuta:
 
     ```bash
-    docker-compose down -v
+    docker compose down -v
     ```
 
 ## Ejemplo 4: Aplicación Web, Base de Datos y Redis (Ejemplo genérico)

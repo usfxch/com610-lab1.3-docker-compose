@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: password123
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306" # ¡Cuidado en producción! Exponer el puerto directamente no es seguro.
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: password123
+    volumes:
+      - wordpress_data:/var/www/html
+volumes:
+  db_data:
+  wordpress_data:
