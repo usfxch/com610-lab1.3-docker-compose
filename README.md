@@ -266,6 +266,39 @@ volumes:
     docker compose down -v
     ```
 
+## Ejemplo 4: Múltiples Instancias de un Servicio (Escalado)
+
+Docker Compose permite escalar servicios fácilmente.
+
+**`docker-compose.yml`:**
+
+```yaml
+services:
+  web:
+    image: nginx:latest
+```
+
+**Uso:**
+
+1.  Guarda este contenido como `docker-compose.yml`.
+2.  Ejecuta:
+    ```bash
+    docker compose up -d --scale web=3
+    ```
+    
+    > Esto iniciará 3 contenedores del servicio `web`.
+
+3.  Puedes verificar los contenedores en ejecución con:
+    ```bash
+    docker ps
+    ```
+
+4.  Para escalar hacia abajo, usa:
+    ```bash
+    docker compose scale web=1
+    ```
+
 ## Ejemplo 4: Aplicación Web, Base de Datos y Redis (Ejemplo genérico)
 ## Ejemplo 5: Múltiples Instancias de un Servicio (Escalado)
 ## Ejemplo 6: Uso de Redes Personalizadas
+
