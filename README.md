@@ -204,3 +204,70 @@ docker-compose up -d
 En esta configuración, el contenedor `loadbalancer` que ejecuta Nginx actúa como un **proxy inverso**. Recibe todas las peticiones de los clientes (tu navegador) y las reenvía a los servidores backend (`app1`, `app2`, `app3`, `app4`) según la configuración del balanceo de carga. Los clientes no interactúan directamente con las aplicaciones backend; solo se comunican con el proxy inverso.
 
 Este ejemplo básico muestra cómo configurar un balanceador de carga con Nginx utilizando Docker Compose. En un escenario real, tus aplicaciones backend serían contenedores con tu código de aplicación real (Express.js, Python/Flask, etc.). La configuración del `upstream` en `nginx.conf` dirigiría el tráfico a esos contenedores.
+
+## Ejemplo 3: Aplicación Web con Base de Datos (WordPress y MySQL)
+
+## Ejemplo 2: Aplicación Web con Base de Datos (WordPress y MySQL)
+
+Este es un ejemplo clásico de una aplicación web que depende de una base de datos.
+
+**`docker-compose.yml`:**
+
+```yaml
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: password123
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306" # ¡Cuidado en producción! Exponer el puerto directamente no es seguro.
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: password123
+    volumes:
+      - wordpress_data:/var/www/html
+volumes:
+  db_data:
+  wordpress_data:
+```
+
+**Explicación:**
+
+  * Se definen dos servicios: `wordpress` y `db` (MySQL).
+  * `wordpress`: Utiliza la imagen de WordPress y depende del servicio `db` (asegurando que MySQL se inicie primero). Se configuran las variables de entorno para conectar WordPress a la base de datos MySQL (usando el nombre del servicio `db` como hostname). También se crea un volumen (`wordpress_data`) para la persistencia de los archivos de WordPress.
+  * `db`: Configura la imagen de MySQL y las variables de entorno para la base de datos. Se crea un volumen con nombre (`db_data`) para persistir los datos de la base de datos.
+  * `volumes:`: Define los volúmenes con nombre utilizados por los servicios.
+
+**Uso:**
+
+1.  Guarda este contenido como `docker-compose.yml`.
+2.  Ejecuta:
+
+    ```bash
+    docker-compose up -d
+    ```
+
+3.  Abre tu navegador y ve a `http://localhost:8080`. Deberías ver la pantalla de instalación de WordPress.
+4.  Para detener y eliminar los contenedores y volúmenes, ejecuta:
+
+    ```bash
+    docker-compose down -v
+    ```
+
+## Ejemplo 4: Aplicación Web, Base de Datos y Redis (Ejemplo genérico)
+## Ejemplo 5: Múltiples Instancias de un Servicio (Escalado)
+## Ejemplo 6: Uso de Redes Personalizadas
