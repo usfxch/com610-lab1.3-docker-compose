@@ -298,7 +298,3 @@ services:
     docker compose scale web=1
     ```
 
-## Ejemplo 4: Aplicación Web, Base de Datos y Redis (Ejemplo genérico)
-## Ejemplo 5: Múltiples Instancias de un Servicio (Escalado)
-## Ejemplo 6: Uso de Redes Personalizadas
-
