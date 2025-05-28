@@ -30,10 +30,16 @@ services:
 
 1.  Crea un directorio llamado `html` en el mismo lugar que tu `docker-compose.yml`.
 2.  Dentro de `html`, crea un archivo `index.html` con algún contenido.
-3.  Ejecuta `bash docker-compose up -d` en el directorio donde está `docker-compose.yml`.
+3.  Ejecuta:
+    ```bash
+    docker compose up -d
+    ``` 
+    > Esto en el directorio donde está `docker-compose.yml`.
 4.  Abre tu navegador y ve a `http://localhost`. Deberías ver el contenido de tu `index.html`.
-5.  Para detener y eliminar los contenedores, ejecuta `bash docker-compose down`
-
+5.  Para detener y eliminar los contenedores, ejecuta:
+    ```bash
+    docker compose down
+    ```
 
 ## Ejemplo 2: Balanceador de Carga con Nginx y Proxy Inverso con Docker Compose
 
@@ -191,7 +197,7 @@ networks:
 4.  Ejecuta:
 
     ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
 
 **Verificación:**
