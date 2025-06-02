@@ -304,3 +304,26 @@ services:
     docker compose scale web=1
     ```
 
+## Ejemplo 5: Aplicación en NodeJS conectandose a MongoDB
+
+```bash
+docker compose up -d
+```
+
+```bash
+docker compose down
+```
+
+Si queremos utilizar mongo como un contenedor por separado
+
+```bash
+docker create -p 27017:27017 --name ejemplo5_mongodb \
+-e MONGO_INITDB_ROOT_USERNAME=marcelo \
+-e MONGO_INITDB_ROOT_PASSWORD=secret \
+-v mongodb_data:/data/db \
+amd64/mongo
+```
+
+```bash
+docker start ejemplo5_mongodb
+```
