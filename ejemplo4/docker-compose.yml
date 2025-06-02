@@ -9,6 +9,7 @@ services:
       - app1
       - app2
       - app3
+      - app4
     networks:
       - app-network
   app1:
